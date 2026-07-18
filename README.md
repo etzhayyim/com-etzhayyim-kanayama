@@ -111,3 +111,21 @@ Schema details deferred to R1 ADR.
 
 - `/90-docs/adr/2605252400-kanayama-circular-metallurgy-r0.md` — Master ADR
 - `/CLAUDE.md` — Religious-corp status table row 46
+
+## Standalone layout and verification
+
+- `manifest.edn` — canonical actor manifest
+- `src/kanayama/{cells,methods,kotoba}` — canonical CLJC runtime
+- `data/lex/*.edn` — canonical semantic lexicons
+- `data/lex-datoms/*.edn` — derived Datomic projections
+- `data/cells` and `data/seed.edn` — canonical actor data
+- `schema/` and `config/` — schemas and application configuration
+- `wire/` — JSON/JSON-LD interoperability snapshots
+
+```sh
+bb test
+bb audit
+```
+
+Python, Go/TinyGo, requirements files, and shell deployment/test wrappers are
+deprecated and forbidden by audit.

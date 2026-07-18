@@ -1,4 +1,4 @@
-# 20-actors/kanayama — CLAUDE.md
+# com-etzhayyim-kanayama — CLAUDE.md
 
 ## Identity
 
@@ -39,7 +39,7 @@ intake_qa → decoating_separation → melting_furnace → dc_casting → hot_ro
 
 ## Constitutional Gates (G1–G14)
 
-**IMMUTABLE R0–R3.** Stored in `manifest.jsonld` under `kanayama:constitutionalGates`. Changes require Council Lv6+ supermajority + new ADR.
+**IMMUTABLE R0–R3.** Stored canonically in `manifest.edn` under `:actor/manifest`. Changes require Council Lv6+ supermajority + new ADR.
 
 See `ADR-2605252400` §4 for definitions. Key enforcement:
 
@@ -149,23 +149,23 @@ See `ADR-2605252400` §4 for definitions. Key enforcement:
 ## Testing (clj-port)
 
 Per ADR-2606160842, the 9 cell state machines have been ported 1:1 from Python to
-`.cljc` (`cells/<cell>/state_machine.cljc` + `test_state_machine.cljc`) and the Python
+`.cljc` (`src/kanayama/cells/<cell>/state_machine.cljc` + tests) and the legacy Python
 cell tree (LangGraph `cell.py` R0 wrappers + `state_machine.py` + `__init__.py`) has been
 pruned — the cljc state machines are now the canonical logic. The LangGraph graph-building
 was an R0 framework leg (`.solve()` raised `RuntimeError` until R1) and was not ported.
 
 **Run the suite** (bb / clojure.test):
 
-```bash
-bash 20-actors/kanayama/run_tests.sh
+```sh
+bb test
+bb audit
 ```
 
-Covers `methods.test-charter-gates`, `py.test-agent`, and all 9 cell
-`cells.<cell>.test-state-machine` namespaces (46 tests / 145 assertions green).
+Covers the Murakumo boundary, method gates, and all 9 cell state-machine namespaces.
 
 ## Related Files
 
-- `/20-actors/kanayama/manifest.jsonld` — DID + cell registry + gates + non-goals
+- `manifest.edn` — DID + cell registry + gates + non-goals
 - `/90-docs/adr/2605252400-kanayama-circular-metallurgy-r0.md` — Master ADR
-- `/20-actors/watatsumi/README.md` — Elemental sibling (水)
+- `/orgs/etzhayyim/com-etzhayyim-watatsumi/README.md` — Elemental sibling (水)
 - `/CLAUDE.md` — Religious-corp status table row 46

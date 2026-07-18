@@ -7,11 +7,12 @@ recovers what they cast).
 
 | Dimension | State |
 |---|---|
-| Lexicons | ✅ 8 under `com.etzhayyim.kanayama.*` (intake / decoating / melting / dcCasting / rolling / coilQualification / airEmissionsAudit / silenRecyclingReview) — R0 skeleton-level required arrays |
-| Cells | 🟡 path-reserved in `20-actors/kanayama/cells` + 40-engine (R0) |
-| Manifest | ✅ `manifest.jsonld` — `constitutionalGates` (G1–G14) + `nonGoals` (N1–N8) machine-readable |
-| Tests | ✅ **23 green** — `methods/test_charter_gates.py` (**5**, added 2026-06-16: manifest gate-set + recycling-only non-goals + emissions basis) **+** `py/test_agent.py` (18, agent-layer gates); `./run_tests.sh` aggregates both |
-| Methods | 🟡 agent present; offline metallurgy engine = R1 |
+| Lexicons | ✅ 8 canonical semantic EDN under `data/lex`; Datomic projections under `data/lex-datoms`; JSON snapshots under `wire/lex` |
+| Cells | ✅ 9 canonical CLJC state machines under `src/kanayama/cells` |
+| Manifest | ✅ canonical `manifest.edn` — gates G1–G14 + non-goals N1–N8 |
+| Tests | ✅ `bb test`: **55 tests / 176 assertions / 0 failures** (2026-07-18) |
+| Methods | 🟡 canonical CLJC agent + Murakumo planner; live metallurgy = R1 |
+| Audit | ✅ EDN syntax, canonical/wire lexicon names, wire boundary, deprecated artifacts |
 
 ## Charter gates pinned by the new charter-gate test
 
